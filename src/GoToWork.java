@@ -7,6 +7,15 @@ public class GoToWork {
 
     public static void main(String[] args) {
 
+        byte byteType = 127;
+        short shortType = 32767;
+        int intType = 2147483647;
+        long longType = 922338203685488589L;
+        float floatType = 0.2F;
+        double doubleType = 0.002;
+        char charType = 'a';
+        boolean booleanType = true;
+
         int weight;
         int wayToGo;
         boolean setAlarm;
