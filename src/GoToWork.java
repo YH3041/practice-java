@@ -13,7 +13,7 @@ public class GoToWork {
         boolean isWater;
         boolean isArrive;
 
-        //test
+        //tests
 
         Scanner input = new Scanner(System.in);
 
