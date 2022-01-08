@@ -13,6 +13,8 @@ public class GoToWork {
         boolean isWater;
         boolean isArrive;
 
+        //test
+
         Scanner input = new Scanner(System.in);
 
         System.out.println("---------학원 가는 길---------");
