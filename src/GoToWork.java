@@ -6,12 +6,12 @@ public class GoToWork {
 
         int totalCash = 10000;
         int totalCardAmount = 50000;
-        int payment;
         int weight;
-        int wayToGo;
         boolean setAlarm;
         boolean isWater;
         boolean isArrive;
+        String wayToGo;
+        String payments;
 
         Scanner input = new Scanner(System.in);
 
@@ -44,12 +44,12 @@ public class GoToWork {
                 System.out.println("옷을 입는다.");
 
                 System.out.println("무엇을 타고 갈 것인가?(1.버스 | 2.지하철)");
-                wayToGo = input.nextInt();
+                wayToGo = input.next();
 
                 switch (wayToGo) {
 
                     //가는 방법(버스)
-                    case 1:
+                    case "버스":
                         System.out.println("버스");
                         System.out.println("신발을 신고 버스정류장으로 걸어간다.");
                         System.out.println("바로 버스가 있는가?");
@@ -59,15 +59,15 @@ public class GoToWork {
                             System.out.println("버스 탑승");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액(테스트 1번) : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액(테스트 2번) : " + totalCash);
@@ -76,7 +76,7 @@ public class GoToWork {
 
                             System.out.println("도착한 정류장에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -93,15 +93,15 @@ public class GoToWork {
                             System.out.println("버스가 오면 탄다.");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -110,7 +110,7 @@ public class GoToWork {
 
                             System.out.println("도착한 정류장에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -123,7 +123,7 @@ public class GoToWork {
                         break;
 
                     // 가는 방법(지하철)
-                    case 2:
+                    case "지하철":
                         System.out.println("지하철");
                         System.out.println("신발을 신고 전철역으로 걸어간다.");
                         System.out.println("바로 전철이 있는가?");
@@ -137,15 +137,15 @@ public class GoToWork {
                             System.out.println("지하철 탑승");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -154,7 +154,7 @@ public class GoToWork {
 
                             System.out.println("도착한 역에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -171,15 +171,15 @@ public class GoToWork {
                             System.out.println("도착한 지하철 탑승");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -188,7 +188,7 @@ public class GoToWork {
 
                             System.out.println("도착한 역에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -202,6 +202,7 @@ public class GoToWork {
                     default:
                         System.out.println("그외에 후보는 없다.");
                 }
+
                 } else {
                 System.out.println("냉장고에 채워넣고 나중에 마신다.");
                 System.out.println("양치를 하고 씻는다.");
@@ -210,13 +211,13 @@ public class GoToWork {
                 System.out.println("옷을 입는다.");
 
                 System.out.println("무엇을 타고 갈 것인가?(1.버스 | 2.지하철)");
-                wayToGo = input.nextInt();
+                wayToGo = input.next();
 
                 // 물을 없는 상황에서 가는 방법
                 switch (wayToGo) {
 
                     // 버스 이용
-                    case 1:
+                    case "버스":
                         totalCash = 10000;
                         totalCardAmount = 50000;
 
@@ -228,15 +229,15 @@ public class GoToWork {
                             System.out.println("버스 탑승");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -245,7 +246,7 @@ public class GoToWork {
 
                             System.out.println("도착한 정류장에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -262,15 +263,15 @@ public class GoToWork {
                             System.out.println("전철이 오면 탄다.");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -279,7 +280,7 @@ public class GoToWork {
 
                             System.out.println("도착한 역에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -292,7 +293,7 @@ public class GoToWork {
                         break;
 
                     // 지하철 이용
-                    case 2:
+                    case "지하철":
                         System.out.println("지하철");
                         System.out.println("신발을 신고 전철역으로 걸어간다.");
                         System.out.println("바로 전철이 있는가?");
@@ -304,15 +305,15 @@ public class GoToWork {
                             System.out.println("전철 탑승");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -321,7 +322,7 @@ public class GoToWork {
 
                             System.out.println("도착한 역에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -338,15 +339,15 @@ public class GoToWork {
                             System.out.println("전철이 오면 탄다.");
 
                             System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                            payment = input.nextInt();
+                            payments = input.next();
 
-                            switch (payment) {
-                                case 1:
+                            switch (payments) {
+                                case "카드":
                                     System.out.println("카드로 결제한다.");
                                     totalCardAmount = totalCardAmount - 1200;
                                     System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                     break;
-                                case 2:
+                                case "현금":
                                     System.out.println("현금으로 결제한다.");
                                     totalCash = totalCash - 1200;
                                     System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -355,7 +356,7 @@ public class GoToWork {
 
                             System.out.println("도착한 역에서 내린다.");
 
-                            if (payment == 1) {
+                            if (payments == "카드") {
                                 System.out.println("카드에 돈이 많으니 택시를 탄다.");
                                 totalCardAmount = totalCardAmount - 4000;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
@@ -375,14 +376,14 @@ public class GoToWork {
             System.out.println("이무 옷이나 꺼내 입고 모자를 쓴다.");
 
             System.out.println("무엇을 타고 갈 것인가?(1.버스 | 2.지하철)");
-            wayToGo = input.nextInt();
+            wayToGo = input.next();
 
 
             // 지각한 상황에서 가는 방법
             switch (wayToGo) {
 
                 // 버스 이용
-                case 1:
+                case "버스":
                     System.out.println("버스");
                     System.out.println("신발을 신고 버스정류장으로 뛰어간다.");
 
@@ -396,15 +397,15 @@ public class GoToWork {
                         System.out.println("버스 탑승");
 
                         System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                        payment = input.nextInt();
+                        payments = input.next();
 
-                        switch (payment) {
-                            case 1:
+                        switch (payments) {
+                            case "카드":
                                 System.out.println("카드로 결제한다.");
                                 totalCardAmount = totalCardAmount - 1200;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                 break;
-                            case 2:
+                            case "현금":
                                 System.out.println("현금으로 결제한다.");
                                 totalCash = totalCash - 1200;
                                 System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -412,7 +413,6 @@ public class GoToWork {
                         }
 
                         System.out.println("도착한 정류장에서 내린다.");
-
 
                         System.out.println("늦었으니 그냥 택시를 탄다.");
                         totalCardAmount = totalCardAmount - 4000;
@@ -427,15 +427,15 @@ public class GoToWork {
                         System.out.println("버스가 오면 탄다.");
 
                         System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                        payment = input.nextInt();
+                        payments = input.next();
 
-                        switch (payment) {
-                            case 1:
+                        switch (payments) {
+                            case "카드":
                                 System.out.println("카드로 결제한다.");
                                 totalCardAmount = totalCardAmount - 1200;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                 break;
-                            case 2:
+                            case "현금":
                                 System.out.println("현금으로 결제한다.");
                                 totalCash = totalCash - 1200;
                                 System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -452,7 +452,7 @@ public class GoToWork {
                     break;
 
                 // 지하철 이용
-                case 2:
+                case "지하철":
                     System.out.println("지하철");
                     System.out.println("신발을 신고 전철역으로 걸어간다.");
                     System.out.println("바로 전철이 있는가?");
@@ -465,15 +465,15 @@ public class GoToWork {
                         System.out.println("도착한 역에서 내린다.");
 
                         System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                        payment = input.nextInt();
+                        payments = input.next();
 
-                        switch (payment) {
-                            case 1:
+                        switch (payments) {
+                            case "카드":
                                 System.out.println("카드로 결제한다.");
                                 totalCardAmount = totalCardAmount - 1200;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                 break;
-                            case 2:
+                            case "현금":
                                 System.out.println("현금으로 결제한다.");
                                 totalCash = totalCash - 1200;
                                 System.out.println("결제 후 현금잔액 : " + totalCash);
@@ -494,15 +494,15 @@ public class GoToWork {
                         System.out.println("전철이 오면 탄다.");
 
                         System.out.println("자불 방법은? (1.카드 | 2.현금)");
-                        payment = input.nextInt();
+                        payments = input.next();
 
-                        switch (payment) {
-                            case 1:
+                        switch (payments) {
+                            case "카드":
                                 System.out.println("카드로 결제한다.");
                                 totalCardAmount = totalCardAmount - 1200;
                                 System.out.println("결제 후 카드잔액 : " + totalCardAmount);
                                 break;
-                            case 2:
+                            case "현금":
                                 System.out.println("현금으로 결제한다.");
                                 totalCash = totalCash - 1200;
                                 System.out.println("결제 후 현금잔액 : " + totalCash);
