@@ -129,7 +129,7 @@ public class GoToWork {
                         System.out.println("바로 전철이 있는가?");
                         isArrive = input.nextBoolean();
 
-                        // 교통수단이 바로 있는지 여부
+                        // 지하철이 바로 있는지 여부
                         if(isArrive) {
                             totalCash = 10000;
                             totalCardAmount = 50000;
@@ -163,7 +163,9 @@ public class GoToWork {
                                 System.out.println("현금잔액이 별로 없으니 걸어서 간다.");
                                 System.out.println("도착해서 의자에 앉아 가방에서 노트북을 꺼낸다.");
                             }
-                        } else {
+                        }
+                        // 바로 지하철이 없을 떄
+                        else {
                             totalCash = 10000;
                             totalCardAmount = 50000;
 
@@ -202,8 +204,8 @@ public class GoToWork {
                     default:
                         System.out.println("그외에 후보는 없다.");
                 }
-
-                } else {
+                // 물이 없을 떄
+            } else {
                 System.out.println("냉장고에 채워넣고 나중에 마신다.");
                 System.out.println("양치를 하고 씻는다.");
                 System.out.println("수건을 꺼내서 물기를 닦는다.");
@@ -482,10 +484,10 @@ public class GoToWork {
 
                         System.out.println("도착한 역에서 내린다.");
 
-                            System.out.println("늦었으니 그냥 택시를 탄다.");
-                            totalCardAmount = totalCardAmount - 4000;
-                            System.out.println("결제 후 카드잔액 : " + totalCardAmount);
-                            System.out.println("도착해서 의자에 앉아 가방에서 노트북을 꺼낸다.");
+                        System.out.println("늦었으니 그냥 택시를 탄다.");
+                        totalCardAmount = totalCardAmount - 4000;
+                        System.out.println("결제 후 카드잔액 : " + totalCardAmount);
+                        System.out.println("도착해서 의자에 앉아 가방에서 노트북을 꺼낸다.");
                     } else {
                         totalCash = 10000;
                         totalCardAmount = 50000;
