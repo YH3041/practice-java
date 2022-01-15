@@ -6,8 +6,11 @@ public class Square {
 
         Scanner input = new Scanner(System.in);
 
-        int column = input.nextInt(); // 열
-        int row = input.nextInt(); // 행
+        System.out.println("열 입력");
+        int column = input.nextInt();
+
+        System.out.println("행 입력");
+        int row = input.nextInt();
 
         String[][] arr = new String[column][row];
 
