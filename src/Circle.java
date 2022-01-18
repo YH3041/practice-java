@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Circle {
 
-    // 원의 방정식을 이용
     // n을 중심으로 n * n 보다 작으면 별찍고 크면 공백
 
     public static void main(String[] args) {
