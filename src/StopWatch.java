@@ -7,20 +7,21 @@ import java.util.TimerTask;
 
 public class StopWatch {
 
+    // reset 후 다시 start 문제점 보완
+    // stop 후 다시 start 문제점 보완
+    // reset 기능 고장
+
     public static void main(String[] args) {
 
-        String[] hours = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
-        String[] minutes = {"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
-        String[] seconds = {"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
-
-        Timer timer = new Timer();
+        String[] hours = {"선택", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        String[] minutes = {"선택", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
+        String[] seconds = {"선택", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
 
         final int[] hour = new int[1];
-
         final int[] minute = new int[1];
-
         final int[] second = new int[1];
 
+        Timer timer = new Timer();
         JFrame fr = new JFrame();
         JPanel pnl = new JPanel();
 
@@ -36,7 +37,7 @@ public class StopWatch {
         JComboBox secondBox = new JComboBox(seconds);
         JScrollPane secondScrollPnl = new JScrollPane(secondBox);
 
-        // comboBox에서 선택하여 시간 가져오기
+        // comboBox에서 선택하여 시간 가져오는 이벤트
         hoursBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +76,8 @@ public class StopWatch {
         JButton jBtn2 = new JButton("RESET");
         JButton jBtn3 = new JButton("STOP");
 
+
+        // START 이벤트
         jBtn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,6 +92,7 @@ public class StopWatch {
                         @Override
                         public void run() {
                             if (h == 0 && m == 0 && s == 0) {
+                                jLabel.setText("타이머 종료");
                                 timer.cancel();
                             }
 
@@ -110,7 +114,7 @@ public class StopWatch {
                                 h--;
                             }
 
-                            jLabel.setText("  타이머가 시작됩니다.");
+                            jLabel.setText("타이머가 시작됩니다.");
                             jLabel1.setText(h + "" + "시");
                             jLabel2.setText(m + "" + "분");
                             jLabel3.setText(s + "" + "초");
@@ -121,20 +125,61 @@ public class StopWatch {
             }
         });
 
+
+        // RESET 이벤트
         jBtn2.addActionListener(new ActionListener() {
-
-            int h = 0;
-            int m = 0;
-            int s = 0;
-
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JButton jb = (JButton) e.getSource();
                 if (jb.getText().equals("RESET")) {
                     jLabel.setText("타이머가 리셋됩니다.");
-                    jLabel1.setText(h + "" + "시");
-                    jLabel2.setText(m + "" + "분");
-                    jLabel3.setText(s + "" + "초");
+                    jLabel1.setText("0시");
+                    jLabel2.setText("0분");
+                    jLabel3.setText("0초");
+                    timer.cancel();
+
+                    jLabel.setText("타이머를 새로 시작해주세요.");
+
+                    TimerTask newTask = new TimerTask() {
+
+                        int h = hour[0];
+                        int m = minute[0];
+                        int s = second[0];
+
+                        @Override
+                        public void run() {
+                            if (h == 0 && m == 0 && s == 0) {
+                                jLabel.setText("타이머 종료");
+                                timer.cancel();
+                            }
+
+                            if (h != 0 && m == 0) {
+                                m = 60;
+                            }
+
+                            if (m != 0 && s == 0) {
+                                s = 60;
+                            }
+
+                            s--;
+
+                            if (s == 0) {
+                                m--;
+                            }
+
+                            if (m == 0) {
+                                h--;
+                            }
+
+                            jLabel.setText("타이머가 시작됩니다.");
+                            jLabel1.setText(h + "" + "시");
+                            jLabel2.setText(m + "" + "분");
+                            jLabel3.setText(s + "" + "초");
+                        }
+                    };
+                    Timer newTimer = new Timer();
+                    newTimer.schedule(newTask, 0, 1000);
                 }
             }
         });
@@ -178,8 +223,8 @@ public class StopWatch {
 
         fr.add(pnl);
 
-        fr.setTitle("스톱워치");
-        fr.setSize(300, 300);
+        fr.setTitle("타이머");
+        fr.setSize(310, 300);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setVisible(true);
 
