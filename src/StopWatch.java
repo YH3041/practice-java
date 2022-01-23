@@ -76,7 +76,6 @@ public class StopWatch {
         JButton jBtn2 = new JButton("RESET");
         JButton jBtn3 = new JButton("STOP");
 
-
         // START 이벤트
         jBtn1.addActionListener(new ActionListener() {
             @Override
