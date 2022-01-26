@@ -2,22 +2,11 @@ package lol;
 
 import javax.swing.*;
 import java.awt.*;
-import lol.champion.Leblanc;
-import lol.champion.LeeSin;
 import lol.gui.GuiEvent;
 import lol.item.BluePotion;
 import lol.item.RedPotion;
 
 public class Main {
-
-    // 컴퓨터는 캐릭터 랜덤 선택
-    // 플레이어가 캐릭터 선택과정에서 클릭시 info 자동으로 나옴
-    // 플레이 우선순위 정하기(나중에)
-    // 대전에서 플레이어 or 컴퓨터는 공격 or 스킬 1번만 가능(버프 후 공격 가능)
-    // 마나가 0이면 스킬 사용 불가
-    // 상대 체력이 0이 되면 win
-
-    // 현재 문제점 Image 때문에 label 텍스트가 묻힌다.
 
     public static void main(String[] args) {
 
@@ -27,10 +16,6 @@ public class Main {
         // 아이템 클래스 객체화
         RedPotion redPotion = new RedPotion();
         BluePotion bluePotion = new BluePotion();
-
-        // 챔피언 클래스 객체화
-        LeeSin leeSin = new LeeSin();
-        Leblanc leblanc = new Leblanc();
 
         // GUI 변수 선언
         JFrame frame = new JFrame("리그 오브 레전드");
@@ -93,48 +78,10 @@ public class Main {
         // 종료 이벤트
         event.endEvent(endBtn);
 
-
         frame.add(infoPanel);
+
         frame.setVisible(true);
 
-
-        // 아이템 사용법
-        leeSin.useItem(bluePotion, bluePotion.manaPlus);
-
-
-
-//        System.out.println("---------------------------------------");
-//        System.out.println("환영합니다.");
-//        System.out.println("---------------------------------------");
-//
-//        System.out.println();
-//
-//        System.out.println("게임을 시작하시겠습니까?");
-//
-//
-//        System.out.println("모드를 선택해주세요");
-//
-//        System.out.println();
-//
-//        System.out.println("---------------------------------------");
-//        System.out.println("컴퓨터가 캐릭터를 선택합니다!");
-//        System.out.println("캐릭터 선택 완료 - 르블랑");
-//        leblanc.info();
-//
-//
-//        System.out.println();
-//
-//        System.out.println("---------------------------------------");
-//        System.out.println("플레이어가 캐릭터를 선택합니다!");
-//        System.out.println("캐릭터를 선택해주세요!");
-//        System.out.println("캐릭터 선택 완료 - 리신");
-//        leeSin.info();
-//
-//        System.out.println();
-//
-//        System.out.println("---------------------------------------");
-//        System.out.println("게임을 시작합니다!");
-//        System.out.println("---------------------------------------");
 
     }
 }

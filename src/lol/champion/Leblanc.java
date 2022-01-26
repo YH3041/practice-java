@@ -17,7 +17,7 @@ public class Leblanc extends Wizard {
     int Mimic = 180;
 
     public Leblanc() {
-        super("르블랑", 55, 22, 30, 530, 330, (int)(55 * 1.75));
+        super("Leblanc", 55, 22, 30, 530, 330, (int)(55 * 1.75));
     }
 
 
