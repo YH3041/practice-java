@@ -6,9 +6,6 @@ public class Item {
     public int price;
     public String description;
 
-    public Item() {
-    }
-
     public Item(String name, int price, String description) {
         this.name = name;
         this.price = price;

@@ -1,6 +1,6 @@
 package lol.position;
 
-import lol.Champion;
+import lol.champion.Champion;
 
 public class Ranged extends Champion {
     public Ranged(String name, int power, int armor, int magicResistance, int health, int mana, int criticalDamage) {

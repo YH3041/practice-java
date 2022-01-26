@@ -54,13 +54,6 @@ public class Leblanc extends Wizard {
         super.miss();
     }
 
-    // 상위 클래스의 아이템 사용 메소드 오버라이딩
-    // Todo: 수정예정
-    @Override
-    public void useItem() {
-        super.useItem();
-    }
-
     // 상위 클래스의 마법 강화 메소드 오버라이딩
     @Override
     public void skillDamageBuff() {

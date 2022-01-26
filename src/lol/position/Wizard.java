@@ -1,6 +1,6 @@
 package lol.position;
 
-import lol.Champion;
+import lol.champion.Champion;
 
 public class Wizard extends Champion {
 

@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import lol.champion.Leblanc;
 import lol.champion.LeeSin;
+import lol.gui.GuiEvent;
+import lol.item.BluePotion;
+import lol.item.RedPotion;
 
 public class Main {
 
@@ -18,9 +21,21 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // GuiEvent 클래스 객체화
+        GuiEvent event = new GuiEvent();
+
+        // 아이템 클래스 객체화
+        RedPotion redPotion = new RedPotion();
+        BluePotion bluePotion = new BluePotion();
+
+        // 챔피언 클래스 객체화
+        LeeSin leeSin = new LeeSin();
+        Leblanc leblanc = new Leblanc();
+
         // GUI 변수 선언
         JFrame frame = new JFrame("리그 오브 레전드");
 
+        // Frame 사이즈 설정
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -29,12 +44,11 @@ public class Main {
 
         // JLabel 객체화
         JLabel imageLabel = new JLabel();
-
         JLabel gameInfoLabel = new JLabel("리그 오브 레전드에 오신 것을 환영합니다.");
-        gameInfoLabel.setFont(new Font("Serif", Font.BOLD, 30));
+        gameInfoLabel.setFont(new Font("Courier", Font.BOLD, 34));
 
         JLabel startInfoLabel = new JLabel("게임을 시작하시겠습니까?");
-        startInfoLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        startInfoLabel.setFont(new Font("Courier", Font.BOLD, 28));
 
         // Button 객체화
         JButton startBtn = new JButton("시작");
@@ -44,10 +58,10 @@ public class Main {
         infoPanel.setLayout(null);
 
         // button, label 위치 및 크기 지정
-        gameInfoLabel.setBounds(120, 40, 600, 50);
-        startInfoLabel.setBounds(280, 400, 400, 50);
-        startBtn.setBounds( 270, 600, 100, 50);
-        endBtn.setBounds(420, 600, 100, 50);
+        gameInfoLabel.setBounds(105, 40, 620, 50);
+        startInfoLabel.setBounds(262, 470, 400, 50);
+        startBtn.setBounds( 280, 600, 100, 50);
+        endBtn.setBounds(440, 600, 100, 50);
 
         // 이미지 가져오기
         ImageIcon background = new ImageIcon(Main.class.getResource("./image/img.jpg"));
@@ -61,24 +75,32 @@ public class Main {
         // 새로운 ImageIcon 객체에 넣기
         ImageIcon updatedImg = new ImageIcon(tempImg);
 
+        // 이미지 set 및 크기 설정
         imageLabel.setIcon(updatedImg);
         imageLabel.setBounds(0, 1, 800, 800);
 
-        frame.getContentPane().add(imageLabel);
-
+        // Panel에 Label, Btn 추가
         infoPanel.add(gameInfoLabel);
         infoPanel.add(startInfoLabel);
         infoPanel.add(startBtn);
         infoPanel.add(endBtn);
+        infoPanel.add(imageLabel);
+
+
+        // 시작 이벤트
+        event.startEvent(startBtn, infoPanel, frame);
+
+        // 종료 이벤트
+        event.endEvent(endBtn);
 
 
         frame.add(infoPanel);
         frame.setVisible(true);
 
 
-        // 챔피언 객체화
-        LeeSin leeSin = new LeeSin();
-        Leblanc leblanc = new Leblanc();
+        // 아이템 사용법
+        leeSin.useItem(bluePotion, bluePotion.manaPlus);
+
 
 
 //        System.out.println("---------------------------------------");

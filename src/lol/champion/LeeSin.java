@@ -1,5 +1,6 @@
 package lol.champion;
 
+import lol.item.Item;
 import lol.position.Assassin;
 
 public class LeeSin extends Assassin {
@@ -59,22 +60,35 @@ public class LeeSin extends Assassin {
         System.out.println("리신이 어쌔신 전용 스킬 크리티컬 버프를 사용합나다.(크리티컬 데미지 15% 상승)");
     }
 
-    // 1번 스킬 사용 - 음파
+    @Override
+    public void useItem(Item item, int effect) {
+        super.useItem(item, effect);
+        switch (item.name) {
+            case "빨간물약":
+                hp += effect;
+                break;
+            case "파란물약":
+                mp += effect;
+                break;
+        }
+    }
+
+    // 1번 스킬 사용 메소드
     public void SonicWave() {
         System.out.println("리신이 스킬 음파를 사용한다.");
     }
 
-    // 2번 스킬 사용 - 방호
+    // 2번 스킬 사용 메소드
     public void SafeGuard() {
         System.out.println("리신이 스킬 방호를 사용한다.");
     }
 
-    // 3번 스킬 사용 - 폭풍
+    // 3번 스킬 사용 메소드
     public void Tempest() {
         System.out.println("리신이 스킬 폭풍을 사용한다.");
     }
 
-    // 4번 스킬 사용 - 용의분노
+    // 4번 스킬 사용 메소드
     public void DragonRage() {
         System.out.println("리신이 스킬 용의분노를 사용한다.");
     }

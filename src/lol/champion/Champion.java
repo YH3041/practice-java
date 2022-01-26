@@ -1,4 +1,6 @@
-package lol;
+package lol.champion;
+
+import lol.item.Item;
 
 public class Champion {
 
@@ -15,22 +17,22 @@ public class Champion {
     public int magicResistance;
 
     // 체력
-    public int health;
+    public int hp;
 
     // 마나
-    public int mana;
+    public int mp;
 
     // 치명타 데미지
     public int criticalDamage;
 
 
-    public Champion(String name, int power, int armor, int magicResistance, int health, int mana, int criticalDamage) {
+    public Champion(String name, int power, int armor, int magicResistance, int hp, int mp, int criticalDamage) {
         this.name = name;
         this.power = power;
         this.armor = armor;
         this.magicResistance = magicResistance;
-        this.health = health;
-        this.mana = mana;
+        this.hp = hp;
+        this.mp = mp;
         this.criticalDamage = criticalDamage;
     }
 
@@ -45,7 +47,7 @@ public class Champion {
     }
 
     // 아이템 사용 메소드
-    public void useItem() {
+    public void useItem(Item item, int effect) {
         System.out.println("아이템 사용");
     }
 }
