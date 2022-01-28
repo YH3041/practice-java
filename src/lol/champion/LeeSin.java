@@ -18,7 +18,7 @@ public class LeeSin extends Assassin {
     int dragonRageDamage = 180;
 
     public LeeSin() {
-        super("Leesin", 68, 36, 32, 575, 200, (int)(68 * 1.75));
+        super("Leesin", 68, 36, 32, 575, 250, (int)(68 * 1.75));
     }
 
     // 캐릭터 정보 가져오기

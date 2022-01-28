@@ -6,11 +6,13 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import lol.Main;
 import lol.champion.Ashe;
+import lol.champion.Champion;
 import lol.champion.Garen;
 import lol.champion.Leblanc;
 import lol.champion.LeeSin;
@@ -20,6 +22,9 @@ import lol.champion.Rakan;
 import lol.champion.Ryze;
 
 public class GuiEvent {
+
+    // 선택된 챔피언 정보를 가져오기 위한 객체 리스트
+    Champion[] championList = new Champion[8];
 
     // 챔피언을 사용하기 위한 객체화
     Ashe ashe = new Ashe();
@@ -175,7 +180,7 @@ public class GuiEvent {
         background.setBounds(0, 1, 800, 800);
 
 
-        // championImgList 배열에 값 할당
+        // championImgList 배열에 각 챔피언 이미지 값 할당
         championImgList[0] = characterImg;
         championImgList[1] = characterImg2;
         championImgList[2] = characterImg3;
@@ -609,39 +614,71 @@ public class GuiEvent {
     // 대전을 보여주는 Panel 메소드
     public void showMatchPanel(Frame frame) {
 
+        Champion currentPlayerChampion = null;
+        Champion currentComputerChampion = null;
+
         Panel newPanel = new Panel();
 
         newPanel.setVisible(true);
 
+        // List에 각 챔피언 객체 할당
+        championList[0] = (ashe);
+        championList[1] = (garen);
+        championList[2] = (leblanc);
+        championList[3] = (leeSin);
+        championList[4] = (lulu);
+        championList[5] = (nocturn);
+        championList[6] = (rakan);
+        championList[7] = (ryze);
+
+        for (int i = 0; i < championList.length; i++) {
+            if (player.equals(championList[i].name)) {
+                currentPlayerChampion = championList[i];
+            }
+            if (computer.equals(championList[i].name)) {
+                currentComputerChampion = championList[i];
+            }
+        }
+
         JLabel playerInfo = new JLabel("Player");
         JLabel playerImg = new JLabel();
+
+        JLabel playerHpInfo = new JLabel("HP");
+        JLabel playerHp = new JLabel(String.valueOf(currentPlayerChampion.hp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel playerMpInfo = new JLabel("MP");
+        JLabel playerMp = new JLabel(String.valueOf(currentPlayerChampion.mp)); // Todo 챔피언에 따른 정보 가져오기
 
         JLabel vs = new JLabel("vs");
 
         JLabel computerInfo = new JLabel("Computer");
         JLabel computerImg = new JLabel();
 
+        JLabel computerHpInfo = new JLabel("HP");
+        JLabel computerHp = new JLabel(String.valueOf(currentComputerChampion.hp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel computerMpInfo = new JLabel("MP");
+        JLabel computerMp = new JLabel(String.valueOf(currentComputerChampion.mp)); // Todo 챔피언에 따른 정보 가져오기
+
         JLabel actionContainer = new JLabel();
 
-        JLabel attackInfo = new JLabel("공격");
+        JLabel attackTitle = new JLabel("공격");
         JButton attackButton = new JButton();
 
-        JLabel missInfo = new JLabel("방어");
+        JLabel missTitle = new JLabel("방어");
         JButton missButton = new JButton();
 
-        JLabel itemInfo = new JLabel("아이템");
+        JLabel itemTitle = new JLabel("아이템");
         JButton useItemButton = new JButton();
 
-        JLabel skillInfo1 = new JLabel("스킬1");
+        JLabel skillTitle1 = new JLabel("스킬1");
         JButton skillButton1 = new JButton();
 
-        JLabel skillInfo2 = new JLabel("스킬2");
+        JLabel skillTitle2 = new JLabel("스킬2");
         JButton skillButton2 = new JButton();
 
-        JLabel skillInfo3 = new JLabel("스킬3");
+        JLabel skillTitle3 = new JLabel("스킬3");
         JButton skillButton3 = new JButton();
 
-        JLabel skillInfo4 = new JLabel("스킬4");
+        JLabel skillTitle4 = new JLabel("스킬4");
         JButton skillButton4 = new JButton();
 
         JLabel background = new JLabel();
@@ -656,7 +693,17 @@ public class GuiEvent {
         playerImg.setBounds(20, 420, 280, 320);
         playerImg.setBorder(new LineBorder(Color.BLACK, 2));
 
-        vs.setBounds(355, 325, 100, 100);
+        playerHpInfo.setBounds(320, 385, 100, 100);
+        playerHpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        playerHp.setBounds(321, 415, 100, 100);
+        playerHp.setFont(new Font("Courier", Font.ITALIC, 28));
+
+        playerMpInfo.setBounds(320, 450, 100, 100);
+        playerMpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        playerMp.setBounds(321, 480, 100, 100);
+        playerMp.setFont(new Font("Courier", Font.ITALIC, 28));
+
+        vs.setBounds(350, 330, 100, 100);
         vs.setFont(new Font("Courier", Font.BOLD, 50));
 
         computerInfo.setBounds(563, -18, 140, 70);
@@ -666,49 +713,59 @@ public class GuiEvent {
         computerImg.setBounds(488, 35, 280, 320);
         computerImg.setBorder(new LineBorder(Color.BLACK, 2));
 
+        computerHpInfo.setBounds(420, 0, 100, 100);
+        computerHpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        computerHp.setBounds(420, 25, 100, 100);
+        computerHp.setFont(new Font("Courier", Font.ITALIC, 28));
 
-        // 플레이어의 공격 및 스킬 Label, Button 설정
+        computerMpInfo.setBounds(420, 65, 100, 100);
+        computerMpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        computerMp.setBounds(420, 90, 100, 100);
+        computerMp.setFont(new Font("Courier", Font.ITALIC, 28));
+
+
+        // 플레이어의 공격 및 스킬 Label, Button 설정(위치 등)
         actionContainer.setBounds(430,421, 340, 318);
         actionContainer.setBorder(new LineBorder(Color.BLACK, 1));
 
-        attackInfo.setBounds(480, 435, 70, 70);
-        attackInfo.setFont(new Font("Courier", Font.BOLD, 18));
+        attackTitle.setBounds(480, 435, 70, 70);
+        attackTitle.setFont(new Font("Courier", Font.BOLD, 18));
         attackButton.setBounds(460, 480, 70, 70);
         attackButton.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(attackButton, "./image/attack.png", 70, 70);
 
-        missInfo.setBounds(585, 435, 70, 70);
-        missInfo.setFont(new Font("Courier", Font.BOLD, 18));
+        missTitle.setBounds(585, 435, 70, 70);
+        missTitle.setFont(new Font("Courier", Font.BOLD, 18));
         missButton.setBounds(565, 480, 70, 70);
         missButton.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(missButton, "./image/miss.png", 70, 70);
 
-        itemInfo.setBounds(682, 435, 70, 70);
-        itemInfo.setFont(new Font("Courier", Font.BOLD, 18));
+        itemTitle.setBounds(682, 435, 70, 70);
+        itemTitle.setFont(new Font("Courier", Font.BOLD, 18));
         useItemButton.setBounds(670, 480, 70, 70);
         useItemButton.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(useItemButton, "./image/red_potion.png", 70, 70);
 
-        skillInfo1.setBounds(455, 570, 70, 70);
-        skillInfo1.setFont(new Font("Courier", Font.BOLD, 18));
+        skillTitle1.setBounds(455, 570, 70, 70);
+        skillTitle1.setFont(new Font("Courier", Font.BOLD, 18));
         skillButton1.setBounds(440, 615, 70, 70);
         skillButton1.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(skillButton1, "./image/" + player +  "/" + player + "_skill1.png", 70, 70);
 
-        skillInfo2.setBounds(540, 570, 70, 70);
-        skillInfo2.setFont(new Font("Courier", Font.BOLD, 18));
+        skillTitle2.setBounds(540, 570, 70, 70);
+        skillTitle2.setFont(new Font("Courier", Font.BOLD, 18));
         skillButton2.setBounds(525, 615, 70, 70);
         skillButton2.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(skillButton2, "./image/" + player +  "/" + player + "_skill2.png", 70, 70);
 
-        skillInfo3.setBounds(625, 570, 70, 70);
-        skillInfo3.setFont(new Font("Courier", Font.BOLD, 18));
+        skillTitle3.setBounds(625, 570, 70, 70);
+        skillTitle3.setFont(new Font("Courier", Font.BOLD, 18));
         skillButton3.setBounds(610, 615, 70, 70);
         skillButton3.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(skillButton3, "./image/" + player +  "/" + player + "_skill3.png", 70, 70);
 
-        skillInfo4.setBounds(705, 570, 70, 70);
-        skillInfo4.setFont(new Font("Courier", Font.BOLD, 18));
+        skillTitle4.setBounds(705, 570, 70, 70);
+        skillTitle4.setFont(new Font("Courier", Font.BOLD, 18));
         skillButton4.setBounds(690, 615, 70, 70);
         skillButton4.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(skillButton4, "./image/" + player +  "/" + player + "_skill4.png", 70, 70);
@@ -720,20 +777,24 @@ public class GuiEvent {
 
         newPanel.add(playerInfo);
         newPanel.add(playerImg);
+        newPanel.add(playerHpInfo);
+        newPanel.add(playerHp);
+        newPanel.add(playerMpInfo);
+        newPanel.add(playerMp);
 
         newPanel.add(actionContainer);
 
-        newPanel.add(attackInfo);
-        newPanel.add(missInfo);
-        newPanel.add(itemInfo);
+        newPanel.add(attackTitle);
+        newPanel.add(missTitle);
+        newPanel.add(itemTitle);
         newPanel.add(attackButton);
         newPanel.add(missButton);
         newPanel.add(useItemButton);
 
-        newPanel.add(skillInfo1);
-        newPanel.add(skillInfo2);
-        newPanel.add(skillInfo3);
-        newPanel.add(skillInfo4);
+        newPanel.add(skillTitle1);
+        newPanel.add(skillTitle2);
+        newPanel.add(skillTitle3);
+        newPanel.add(skillTitle4);
         newPanel.add(skillButton1);
         newPanel.add(skillButton2);
         newPanel.add(skillButton3);
@@ -743,10 +804,26 @@ public class GuiEvent {
 
         newPanel.add(computerInfo);
         newPanel.add(computerImg);
+        newPanel.add(computerHpInfo);
+        newPanel.add(computerHp);
+        newPanel.add(computerMpInfo);
+        newPanel.add(computerMp);
 
         newPanel.add(background);
 
         frame.add(newPanel);
 
+    }
+
+
+    // 공격 버튼 이벤트 메소드
+    // 공격 후에 컴퓨터 or 플레이어의 hp는 새롭게 setText된다.(모두가 setText 된다면 로직이 줄어들까?)
+    public void attackEvent(JButton button, Champion currentPlay) {
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }
