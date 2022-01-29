@@ -71,7 +71,6 @@ public class Main {
         infoPanel.add(endBtn);
         infoPanel.add(imageLabel);
 
-
         // 시작 이벤트
         event.startEvent(startBtn, infoPanel, frame);
 
@@ -79,6 +78,7 @@ public class Main {
         event.endEvent(endBtn);
 
         frame.add(infoPanel);
+
 
         frame.setVisible(true);
 

@@ -6,45 +6,33 @@ import lol.position.Assassin;
 public class LeeSin extends Assassin {
 
     // 스킬 1 데미지
-    int sonicWaveDamage = 80;
+    int sonicWaveDamage = 50;
+    int sonicWaveMana = 50;
 
     // 스킬 2 데미지
     int safeGuardArmor = 50;
+    int safeGuardMana = 30;
 
     // 스킬 3 데미지
     int tempestDamage = 100;
+    int tempestMana = 50;
 
     // 스킬 4 데미지
-    int dragonRageDamage = 180;
+    int dragonRageDamage = 150;
+    int dragonRageMana = 100;
 
     public LeeSin() {
         super("Leesin", 68, 36, 32, 575, 250, (int)(68 * 1.75));
     }
 
-    // 캐릭터 정보 가져오기
-    public void info() {
-        System.out.println("캐릭터 정보를 가져옵니다");
-        System.out.println("---------------------------------------");
-        System.out.println("챔피언명 : 리신");
-        System.out.println("포지션 : 어쌔신");
-        System.out.println("공격력 : 68");
-        System.out.println("방어력 : 36");
-        System.out.println("마법저항력 : 32");
-        System.out.println("체력 : 575");
-        System.out.println("마나 : 200");
-        System.out.println("크리티컬 데미지 : 119");
-        System.out.println("스킬 1(음파) - 데미지 80 | 마나소모 50");
-        System.out.println("스킬 2(방호) - 방어막 50 | 마나소모 30");
-        System.out.println("스킬 3(폭풍) - 데미지 100 | 마나소모 50");
-        System.out.println("스킬 4(용의분노) - 데미지 180 | 마나소모 100");
-        System.out.println("---------------------------------------");
-    }
-
     // 상위 클래스의 공격 메소드 오버라이딩
     @Override
-    public void attack() {
-        System.out.println("리신이 공격합니다. 데미지 " + power);
-        super.attack();
+    public void attack(Champion player, Champion computer) {
+        if (computer.hp <= 0) {
+            computer.hp -= 0;
+        } else {
+            computer.hp -= player.power;
+        }
     }
 
     // 상위 클래스의 회피 메소드 오버라이딩
@@ -74,23 +62,56 @@ public class LeeSin extends Assassin {
         }
     }
 
-    // 1번 스킬 사용 메소드
-    public void SonicWave() {
-        System.out.println("리신이 스킬 음파를 사용한다.");
+    // 스킬 1 사용 메소드
+    @Override
+    public void skill1(Champion player, Champion computer) {
+        System.out.println("리신이 스킬(음파)을 사용한다.");
+        if (player.mp <= 0 || player.mp < sonicWaveMana) {
+            computer.hp -= 0;
+            player.mp -= 0;
+        } else {
+            computer.hp -= sonicWaveDamage;
+            player.mp -= sonicWaveMana;
+        }
     }
 
-    // 2번 스킬 사용 메소드
-    public void SafeGuard() {
-        System.out.println("리신이 스킬 방호를 사용한다.");
+    // 스킬 2 사용 메소드
+    @Override
+    public void skill2(Champion player, Champion computer) {
+        System.out.println("리신이 스킬(방호)을 사용한다.");
+        if (player.mp <= 0 || player.mp < safeGuardMana) {
+            computer.hp += 0;
+            player.mp -= 0;
+        } else {
+            player.hp += safeGuardArmor;
+            player.mp -= safeGuardMana;
+        }
     }
 
-    // 3번 스킬 사용 메소드
-    public void Tempest() {
-        System.out.println("리신이 스킬 폭풍을 사용한다.");
+    // 스킬 3 사용 메소드
+    @Override
+    public void skill3(Champion player, Champion computer) {
+        System.out.println("리신이 스킬(폭풍)을 사용한다.");
+        if (player.mp <= 0 || player.mp < tempestMana) {
+            computer.hp -= 0;
+            player.mp -= 0;
+        } else {
+            computer.hp -= tempestDamage;
+            player.mp -= tempestMana;
+        }
     }
 
-    // 4번 스킬 사용 메소드
-    public void DragonRage() {
-        System.out.println("리신이 스킬 용의분노를 사용한다.");
+    // 스킬 4 사용 메소드
+    @Override
+    public void skill4(Champion player, Champion computer) {
+        System.out.println("리신이 스킬(용의분노)을 사용한다.");
+        if (player.mp <= 0 || player.mp < dragonRageMana) {
+            computer.hp -= 0;
+            player.mp -= 0;
+        } else  {
+            computer.hp -= dragonRageDamage;
+            player.mp -= dragonRageMana;
+        }
     }
+
 }

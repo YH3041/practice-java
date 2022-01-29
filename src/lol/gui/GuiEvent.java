@@ -6,7 +6,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +25,9 @@ public class GuiEvent {
     // 선택된 챔피언 정보를 가져오기 위한 객체 리스트
     Champion[] championList = new Champion[8];
 
+    // 챔피언 선택 이벤트를 위한 championImgList
+    JButton[] championImgList = new JButton[8];
+
     // 챔피언을 사용하기 위한 객체화
     Ashe ashe = new Ashe();
     Garen garen = new Garen();
@@ -36,18 +38,32 @@ public class GuiEvent {
     Rakan rakan = new Rakan();
     Ryze ryze = new Ryze();
 
-    // 챔피언 선택 이벤트를 위한 championImgList
-    JButton[] championImgList = new JButton[8];
-
     // 선택된 캐릭터 정보를 불러오기 위한 변수
     String player = "";
     String computer = "";
+    Champion currentPlayerChampion = null;
+    Champion currentComputerChampion = null;
+
+
+    // 공격턴을 관리하기 위한 변수
+    int attackCount = 1;
+    boolean playerTurn = true;
 
     // 시작 버튼 이벤트 메소드
     public void startEvent(JButton button, JPanel panel, Frame frame) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // List에 각 챔피언 객체 할당
+                championList[0] = (ashe);
+                championList[1] = (garen);
+                championList[2] = (leblanc);
+                championList[3] = (leeSin);
+                championList[4] = (lulu);
+                championList[5] = (nocturn);
+                championList[6] = (rakan);
+                championList[7] = (ryze);
+
                 panel.setVisible(false);
                 choicePanel(frame);
             }
@@ -298,6 +314,16 @@ public class GuiEvent {
                     player = championImgList[0].getName();
                     computer = championImgList[randomNum].getName();
 
+                    // 선택된 챔피언 할당을 위한 for문
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         // 선택 후 로딩창까지 딜레이를 위한 Schedule
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -330,6 +356,15 @@ public class GuiEvent {
                     player = championImgList[1].getName();
                     computer = championImgList[randomNum].getName();
 
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
                         executorService.scheduleAtFixedRate(new Runnable() {
@@ -358,6 +393,15 @@ public class GuiEvent {
 
                     player = championImgList[2].getName();
                     computer = championImgList[randomNum].getName();
+
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
 
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -388,6 +432,15 @@ public class GuiEvent {
                     player = championImgList[3].getName();
                     computer = championImgList[randomNum].getName();
 
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
                         executorService.scheduleAtFixedRate(new Runnable() {
@@ -417,6 +470,15 @@ public class GuiEvent {
                     player = championImgList[4].getName();
                     computer = championImgList[randomNum].getName();
 
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
                         executorService.scheduleAtFixedRate(new Runnable() {
@@ -445,6 +507,15 @@ public class GuiEvent {
 
                     player = championImgList[5].getName();
                     computer = championImgList[randomNum].getName();
+
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
 
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -476,6 +547,15 @@ public class GuiEvent {
                     player = championImgList[6].getName();
                     computer = championImgList[randomNum].getName();
 
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
                         executorService.scheduleAtFixedRate(new Runnable() {
@@ -505,6 +585,15 @@ public class GuiEvent {
                     player = championImgList[7].getName();
                     computer = championImgList[randomNum].getName();
 
+                    for (int i = 0; i < championList.length; i++) {
+                        if (player.equals(championList[i].name)) {
+                            currentPlayerChampion = championList[i];
+                        }
+                        if (computer.equals(championList[i].name)) {
+                            currentComputerChampion = championList[i];
+                        }
+                    }
+
                     try {
                         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
                         executorService.scheduleAtFixedRate(new Runnable() {
@@ -530,6 +619,8 @@ public class GuiEvent {
     public void showChampionInfoPanel(Frame frame, JButton button) {
 
         JPanel newPanel = new JPanel();
+
+        newPanel.setVisible(true);
 
         JLabel playerInfo = new JLabel("Player");
         JLabel characterImg = new JLabel();
@@ -590,63 +681,32 @@ public class GuiEvent {
 
         frame.add(newPanel);
 
-        newPanel.setVisible(true);
-
-        try {
-            ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-            executorService.scheduleAtFixedRate(new Runnable() {
-                @Override
-                public void run() {
-                    newPanel.setVisible(false);
-                    executorService.shutdown();
-                    newPanel.setVisible(true);
-                    showMatchPanel(frame);
-                    newPanel.setVisible(false);
-                    showMatchPanel(frame);
-                }
-            }, 4, 1, TimeUnit.SECONDS);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                newPanel.setVisible(false);
+                showMatchPanel(frame);
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
 
     }
 
-    // 대전을 보여주는 Panel 메소드
+    // 대전 화면을 보여주는 메소드
     public void showMatchPanel(Frame frame) {
 
-        Champion currentPlayerChampion = null;
-        Champion currentComputerChampion = null;
+        Panel panel = new Panel();
 
-        Panel newPanel = new Panel();
-
-        newPanel.setVisible(true);
-
-        // List에 각 챔피언 객체 할당
-        championList[0] = (ashe);
-        championList[1] = (garen);
-        championList[2] = (leblanc);
-        championList[3] = (leeSin);
-        championList[4] = (lulu);
-        championList[5] = (nocturn);
-        championList[6] = (rakan);
-        championList[7] = (ryze);
-
-        for (int i = 0; i < championList.length; i++) {
-            if (player.equals(championList[i].name)) {
-                currentPlayerChampion = championList[i];
-            }
-            if (computer.equals(championList[i].name)) {
-                currentComputerChampion = championList[i];
-            }
-        }
+        panel.setLayout(null);
 
         JLabel playerInfo = new JLabel("Player");
         JLabel playerImg = new JLabel();
 
         JLabel playerHpInfo = new JLabel("HP");
-        JLabel playerHp = new JLabel(String.valueOf(currentPlayerChampion.hp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel playerHp = new JLabel(String.valueOf(currentPlayerChampion.hp));
         JLabel playerMpInfo = new JLabel("MP");
-        JLabel playerMp = new JLabel(String.valueOf(currentPlayerChampion.mp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel playerMp = new JLabel(String.valueOf(currentPlayerChampion.mp));
 
         JLabel vs = new JLabel("vs");
 
@@ -654,9 +714,9 @@ public class GuiEvent {
         JLabel computerImg = new JLabel();
 
         JLabel computerHpInfo = new JLabel("HP");
-        JLabel computerHp = new JLabel(String.valueOf(currentComputerChampion.hp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel computerHp = new JLabel(String.valueOf(currentComputerChampion.hp));
         JLabel computerMpInfo = new JLabel("MP");
-        JLabel computerMp = new JLabel(String.valueOf(currentComputerChampion.mp)); // Todo 챔피언에 따른 정보 가져오기
+        JLabel computerMp = new JLabel(String.valueOf(currentComputerChampion.mp));
 
         JLabel actionContainer = new JLabel();
 
@@ -681,9 +741,20 @@ public class GuiEvent {
         JLabel skillTitle4 = new JLabel("스킬4");
         JButton skillButton4 = new JButton();
 
+        JLabel battleInfo = new JLabel("대전을 시작합니다.");
+        JLabel battleInfo2 = new JLabel("");
+
         JLabel background = new JLabel();
 
-        newPanel.setLayout(null);
+        playerHpInfo.setBounds(320, 385, 100, 100);
+        playerHpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        playerHp.setBounds(321, 415, 100, 100);
+        playerHp.setFont(new Font("Courier", Font.ITALIC, 28));
+
+        playerMpInfo.setBounds(320, 450, 100, 100);
+        playerMpInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        playerMp.setBounds(321, 480, 100, 100);
+        playerMp.setFont(new Font("Courier", Font.ITALIC, 28));
 
         // 선택된 캐릭터 정보 이미지 가져오기
         playerInfo.setBounds(112, 367, 120, 70);
@@ -770,60 +841,455 @@ public class GuiEvent {
         skillButton4.setBorder(new LineBorder(Color.BLACK, 1));
         createImage(skillButton4, "./image/" + player +  "/" + player + "_skill4.png", 70, 70);
 
+        battleInfo.setBounds(60, 50, 440, 280);
+        battleInfo.setFont(new Font("Courier", Font.BOLD, 30));
+        battleInfo2.setBounds(60, 100, 440, 280);
+        battleInfo2.setFont(new Font("Courier", Font.ITALIC, 26));
 
         // 배경 이미지 크기 설정
         createImage(background, "./image/backImg.jpeg", 800, 800);
         background.setBounds(0, 1, 800, 800);
 
-        newPanel.add(playerInfo);
-        newPanel.add(playerImg);
-        newPanel.add(playerHpInfo);
-        newPanel.add(playerHp);
-        newPanel.add(playerMpInfo);
-        newPanel.add(playerMp);
+        panel.add(playerInfo);
+        panel.add(playerImg);
+        panel.add(playerHpInfo);
+        panel.add(playerHp);
+        panel.add(playerMpInfo);
+        panel.add(playerMp);
 
-        newPanel.add(actionContainer);
+        panel.add(actionContainer);
 
-        newPanel.add(attackTitle);
-        newPanel.add(missTitle);
-        newPanel.add(itemTitle);
-        newPanel.add(attackButton);
-        newPanel.add(missButton);
-        newPanel.add(useItemButton);
+        panel.add(attackTitle);
+        panel.add(missTitle);
+        panel.add(itemTitle);
+        panel.add(attackButton);
+        panel.add(missButton);
+        panel.add(useItemButton);
 
-        newPanel.add(skillTitle1);
-        newPanel.add(skillTitle2);
-        newPanel.add(skillTitle3);
-        newPanel.add(skillTitle4);
-        newPanel.add(skillButton1);
-        newPanel.add(skillButton2);
-        newPanel.add(skillButton3);
-        newPanel.add(skillButton4);
+        panel.add(skillTitle1);
+        panel.add(skillTitle2);
+        panel.add(skillTitle3);
+        panel.add(skillTitle4);
+        panel.add(skillButton1);
+        panel.add(skillButton2);
+        panel.add(skillButton3);
+        panel.add(skillButton4);
 
-        newPanel.add(vs);
+        panel.add(vs);
 
-        newPanel.add(computerInfo);
-        newPanel.add(computerImg);
-        newPanel.add(computerHpInfo);
-        newPanel.add(computerHp);
-        newPanel.add(computerMpInfo);
-        newPanel.add(computerMp);
+        panel.add(computerInfo);
+        panel.add(computerImg);
+        panel.add(computerHpInfo);
+        panel.add(computerHp);
+        panel.add(computerMpInfo);
+        panel.add(computerMp);
 
-        newPanel.add(background);
+        panel.add(battleInfo);
+        panel.add(battleInfo2);
 
-        frame.add(newPanel);
+        panel.add(background);
+
+        frame.add(panel);
+
+
+        // 플레이어 공격 메소드
+        attackEvent(frame, panel, attackButton, computerHp, battleInfo, battleInfo2);
+        skillEvent(skillButton1, skillButton2, skillButton3, skillButton4, computerHp, playerMp,
+                battleInfo, battleInfo2, frame, panel);
+
+
+        // 특정 시간마다 컴퓨터의 공격을 위한 스케줄러
+        try {
+            ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+            executorService.scheduleAtFixedRate(new Runnable() {
+                @Override
+                public void run() {
+                    // 컴퓨터 공격 메소드
+                    randomAttackComputerEvent(playerHp, battleInfo, battleInfo2, frame, panel);
+                }
+            }, 6, 1, TimeUnit.SECONDS);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
 
 
-    // 공격 버튼 이벤트 메소드
-    // 공격 후에 컴퓨터 or 플레이어의 hp는 새롭게 setText된다.(모두가 setText 된다면 로직이 줄어들까?)
-    public void attackEvent(JButton button, Champion currentPlay) {
-        button.addActionListener(new ActionListener() {
+    // 플레이어 공격 버튼 이벤트 메소드
+    public void attackEvent(Frame frame, Panel panel, JButton button, JLabel computerHp, JLabel battleInfo, JLabel battleInfo2) {
+        if (attackCount == 1 && playerTurn == true) {
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    currentPlayerChampion.attack(currentPlayerChampion, currentComputerChampion);
+                    computerHp.setText(String.valueOf(currentComputerChampion.hp));
+                    attackCount = 0;
+                    playerTurn = false;
+                    battleInfo2.setForeground(Color.RED);
+                    battleInfo2.setText(currentPlayerChampion.name + "의 공격 데미지 : " + currentPlayerChampion.power);
+                    battleInfo.setText("컴퓨터 공격 준비중...");
+                    if (currentComputerChampion.hp <= 0) {
+                        currentComputerChampion.hp = 0;
+                        battleInfo.setText("Game Over");
+                        battleInfo2.setText("잠시 후 Winner 페이지로 넘어 갑니다.");
+                        Timer timer = new Timer(2000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                                panel.setVisible(false);
+                                winnerPanel(frame);
+                            }
+                        });
+                        timer.setRepeats(false);
+                        timer.start();
+                    }
+                }
+            });
+        } else {
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    battleInfo.setText("컴퓨터가 공격할 차례입니다.");
+                }
+            });
+        }
+
+    }
+
+    // 플레이어 스킬 버튼 이벤트 메소드
+    public void skillEvent(JButton skillBtn1, JButton skillBtn2, JButton skillBtn3, JButton skillBtn4,
+                           JLabel computerHp , JLabel playerMp, JLabel battleInfo, JLabel battleInfo2,
+                           Frame frame, Panel panel) {
+
+        skillBtn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (attackCount == 1 && playerTurn == true) {
+
+                    if (currentPlayerChampion.mp <= 0) {
+                        computerHp.setText(String.valueOf(0));
+                        battleInfo2.setText("마나가 부족합니다.");
+                    } else {
+                        currentPlayerChampion.skill1(currentPlayerChampion, currentComputerChampion);
+                        computerHp.setText(String.valueOf(currentComputerChampion.hp));
+                        playerMp.setText(String.valueOf(currentPlayerChampion.mp));
+                        attackCount = 0;
+                        playerTurn = false;
+                        battleInfo2.setForeground(Color.RED);
+                        battleInfo2.setText(currentPlayerChampion.name + "의 스킬 1 데미지 : " + 50);
+                        battleInfo.setText("컴퓨터 공격 준비중...");
+                    }
+                } else {
+                    battleInfo.setText("컴퓨터가 공격할 차례입니다.");
+                }
+                if (currentComputerChampion.hp <= 0) {
+                    battleInfo.setText("Game Over");
+                    battleInfo2.setText("잠시 후 Winner 페이지로 넘어 갑니다.");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        });
+
+        skillBtn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (attackCount == 1 && playerTurn == true) {
+
+                    if (currentPlayerChampion.mp <= 0) {
+                        computerHp.setText(String.valueOf(0));
+                        battleInfo2.setText("마나가 부족합니다.");
+                    } else {
+                        currentPlayerChampion.skill2(currentPlayerChampion, currentComputerChampion);
+                        computerHp.setText(String.valueOf(currentComputerChampion.hp));
+                        playerMp.setText(String.valueOf(currentPlayerChampion.mp));
+                        attackCount = 0;
+                        playerTurn = false;
+                        battleInfo2.setForeground(Color.RED);
+                        battleInfo2.setText(currentPlayerChampion.name + "의 스킬 2 데미지 : " + 50);
+                        battleInfo.setText("컴퓨터 공격 준비중...");
+                    }
+                } else {
+                    battleInfo.setText("컴퓨터가 공격할 차례입니다.");
+                }
+                if (currentComputerChampion.hp <= 0) {
+                    battleInfo.setText("Game Over");
+                    battleInfo2.setText("잠시 후 Winner 페이지로 넘어 갑니다.");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        });
+
+        skillBtn3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (attackCount == 1 && playerTurn == true) {
+
+                    if (currentPlayerChampion.mp <= 0) {
+                        computerHp.setText(String.valueOf(0));
+                        battleInfo2.setText("마나가 부족합니다.");
+                    } else {
+                        currentPlayerChampion.skill3(currentPlayerChampion, currentComputerChampion);
+                        computerHp.setText(String.valueOf(currentComputerChampion.hp));
+                        playerMp.setText(String.valueOf(currentPlayerChampion.mp));
+                        attackCount = 0;
+                        playerTurn = false;
+                        battleInfo2.setForeground(Color.RED);
+                        battleInfo2.setText(currentPlayerChampion.name + "의 스킬 3 데미지 : " + 100);
+                        battleInfo.setText("컴퓨터 공격 준비중...");
+                    }
+                } else {
+                    battleInfo.setText("컴퓨터가 공격할 차례입니다.");
+                }
+                if (currentComputerChampion.hp <= 0) {
+                    battleInfo.setText("Game Over");
+                    battleInfo2.setText("잠시 후 Winner 페이지로 넘어 갑니다.");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
 
             }
         });
+
+        skillBtn4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (attackCount == 1 && playerTurn == true) {
+
+                    if (currentPlayerChampion.mp <= 0) {
+                        computerHp.setText(String.valueOf(0));
+                        battleInfo2.setText("마나가 부족합니다.");
+                    } else {
+                        currentPlayerChampion.skill4(currentPlayerChampion, currentComputerChampion);
+                        computerHp.setText(String.valueOf(currentComputerChampion.hp));
+                        playerMp.setText(String.valueOf(currentPlayerChampion.mp));
+                        attackCount = 0;
+                        playerTurn = false;
+                        battleInfo2.setForeground(Color.RED);
+                        battleInfo2.setText(currentPlayerChampion.name + "의 스킬 4 데미지 : " + 150);
+                        battleInfo.setText("컴퓨터 공격 준비중...");
+                    }
+                } else {
+                    battleInfo.setText("컴퓨터가 공격할 차례입니다.");
+                }
+                if (currentComputerChampion.hp <= 0) {
+                    battleInfo.setText("Game Over");
+                    battleInfo2.setText("잠시 후 Winner 페이지로 넘어 갑니다.");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        });
     }
+
+    // 컴퓨터 랜덤 공격 이벤트 메소드
+    public void randomAttackComputerEvent(JLabel playerInfo, JLabel battleInfo, JLabel battleInfo2, Frame frame, Panel panel) {
+        int randomNum = (int)Math.random() * 5;
+
+        switch (randomNum) {
+            case 0:
+                if (attackCount == 0 && playerTurn == false) {
+                    currentComputerChampion.attack(currentPlayerChampion, currentComputerChampion);
+                    currentPlayerChampion.hp -= currentComputerChampion.power;
+                    if (currentPlayerChampion.hp <= 0) {
+                        playerInfo.setText(String.valueOf(0));
+                    }
+                    playerInfo.setText(String.valueOf(currentPlayerChampion.hp));
+                    attackCount = 1;
+                    playerTurn = true;
+                    battleInfo2.setForeground(Color.BLUE);
+                    battleInfo2.setText(currentComputerChampion.name + "의 공격 데미지 : " + currentComputerChampion.power);
+                    battleInfo.setText("플레이어 공격으로 턴이 넘어갑니다.");
+                    break;
+                } else {
+                    battleInfo.setText("플레이어가 공격할 차례입니다.");
+                }
+                if (currentPlayerChampion.hp <= 0 || currentPlayerChampion.hp <= 0) {
+                    playerInfo.setText("0");
+                    currentPlayerChampion.hp = 0;
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    break;
+                }
+            case 1:
+                if (attackCount == 0 && playerTurn == false) {
+                    currentComputerChampion.skill1(currentPlayerChampion, currentComputerChampion);
+                    playerInfo.setText(String.valueOf(currentPlayerChampion.hp));
+                    attackCount = 1;
+                    playerTurn = true;
+                    battleInfo2.setForeground(Color.BLUE);
+                    battleInfo2.setText(currentComputerChampion.name + "의 스킬 1 데미지 : " + 50);
+                    battleInfo.setText("플레이어 공격으로 턴이 넘어갑니다.");
+                    break;
+                } else {
+                    battleInfo.setText("플레이어가 공격할 차례입니다.");
+                }
+                if (currentPlayerChampion.hp <= 0 || currentPlayerChampion.hp <= 0) {
+                    playerInfo.setText("0");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    break;
+                }
+            case 2:
+                if (attackCount == 0 && playerTurn == false) {
+                    currentComputerChampion.skill2(currentPlayerChampion, currentComputerChampion);
+                    playerInfo.setText(String.valueOf(currentPlayerChampion.hp));
+                    attackCount = 1;
+                    playerTurn = true;
+                    battleInfo2.setForeground(Color.BLUE);
+                    battleInfo2.setText(currentComputerChampion.name + "의 스킬 1 데미지 : " + 50);
+                    battleInfo.setText("플레이어 공격으로 턴이 넘어갑니다.");
+                    break;
+                } else {
+                    battleInfo.setText("플레이어가 공격할 차례입니다.");
+                }
+                if (currentPlayerChampion.hp <= 0 || currentPlayerChampion.hp <= 0) {
+                    playerInfo.setText("0");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    break;
+                }
+            case 3:
+                if (attackCount == 0 && playerTurn == false) {
+                    currentComputerChampion.skill3(currentPlayerChampion, currentComputerChampion);
+                    playerInfo.setText(String.valueOf(currentPlayerChampion.hp));
+                    attackCount = 1;
+                    playerTurn = true;
+                    battleInfo2.setForeground(Color.BLUE);
+                    battleInfo2.setText(currentComputerChampion.name + "의 스킬 1 데미지 : " + 100);
+                    battleInfo.setText("플레이어 공격으로 턴이 넘어갑니다.");
+                    break;
+                } else {
+                    battleInfo.setText("플레이어가 공격할 차례입니다.");
+                }
+                if (currentPlayerChampion.hp <= 0 || currentPlayerChampion.hp <= 0) {
+                    playerInfo.setText("0");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    break;
+                }
+            case 4:
+                if (attackCount == 0 && playerTurn == false) {
+                    currentComputerChampion.skill4(currentPlayerChampion, currentComputerChampion);
+                    playerInfo.setText(String.valueOf(currentPlayerChampion.hp));
+                    attackCount = 1;
+                    playerTurn = true;
+                    battleInfo2.setForeground(Color.BLUE);
+                    battleInfo2.setText(currentComputerChampion.name + "의 스킬 1 데미지 : " + 150);
+                    battleInfo.setText("플레이어 공격으로 턴이 넘어갑니다.");
+                    break;
+                } else {
+                    battleInfo.setText("플레이어가 공격할 차례입니다.");
+                }
+                if (currentPlayerChampion.hp <= 0 || currentPlayerChampion.hp <= 0) {
+                    playerInfo.setText("0");
+                    Timer timer = new Timer(2000, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            panel.setVisible(false);
+                            winnerPanel(frame);
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    break;
+                }
+        }
+    }
+
+    public void winnerPanel(Frame frame) {
+
+        Panel panel = new Panel();
+
+        JLabel result = new JLabel("Game Over");
+        JLabel background = new JLabel();
+
+        panel.setVisible(true);
+
+        panel.setLayout(null);
+
+        result.setBounds(100, 300, 700, 500);
+        result.setFont(new Font("Courier", Font.BOLD, 90));
+
+        createImage(background, "./image/victory.jpeg", 800, 800);
+        background.setBounds(0, 1, 800, 800);
+
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                if (currentComputerChampion.hp <= 0) {
+                    result.setText("Player Win");
+                } else {
+                    result.setText("Computer Win");
+                }
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
+
+        panel.add(result);
+        panel.add(background);
+
+        frame.add(panel);
+    }
+
+//    public void missEvent(JButton button, ) {
+//
+//    }
 }

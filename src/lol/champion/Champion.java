@@ -37,7 +37,7 @@ public class Champion {
     }
 
     // 공격 사용 메소드
-    public void attack() {
+    public void attack(Champion player, Champion computer) {
         System.out.println("공격");
     }
 
@@ -49,5 +49,22 @@ public class Champion {
     // 아이템 사용 메소드
     public void useItem(Item item, int effect) {
         System.out.println("아이템 사용");
+    }
+
+
+    public void skill1(Champion player, Champion computer) {
+        System.out.println("스킬 1 사용");
+    }
+
+    public void skill2(Champion player, Champion computer) {
+        System.out.println("스킬 2 사용");
+    }
+
+    public void skill3(Champion player, Champion computer) {
+        System.out.println("스킬 3 사용");
+    }
+
+    public void skill4(Champion player, Champion computer) {
+        System.out.println("스킬 4 사용");
     }
 }
