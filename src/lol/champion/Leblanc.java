@@ -1,5 +1,4 @@
 package lol.champion;
-
 import lol.position.Wizard;
 
 public class Leblanc extends Wizard {
@@ -26,14 +25,13 @@ public class Leblanc extends Wizard {
 
     // 상위 클래스의 공격 메소드 오버라이딩
     @Override
-    public void attack(Champion player, Champion computer) {
-        if (computer.hp <= 0) {
+    public void attack(Champion player, Champion computer, int attackCount) {
+        if (computer.hp <= 0 || attackCount == 0) {
             computer.hp -= 0;
         } else {
             computer.hp -= player.power;
         }
     }
-
     // 상위 클래스의 회피 메소드 오버라이딩
     @Override
     public void miss() {
@@ -54,53 +52,93 @@ public class Leblanc extends Wizard {
 
     // 스킬 1 사용 메소드
     @Override
-    public void skill1(Champion player, Champion computer) {
+    public void skill1(Champion player, Champion computer, String name) {
         System.out.println("르블랑이 스킬(악의의 인장)을 사용한다.");
-        if (player.mp <= 0 || player.mp < sealOfMaliceMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= sealOfMaliceDamage;
-            player.mp -= sealOfMaliceMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < sealOfMaliceMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= sealOfMaliceDamage;
+                player.mp -= sealOfMaliceMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < sealOfMaliceMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= sealOfMaliceDamage;
+                computer.mp -= sealOfMaliceMana;
+            }
         }
     }
 
     // 스킬 2 사용 메소드
     @Override
-    public void skill2(Champion player, Champion computer) {
+    public void skill2(Champion player, Champion computer, String name) {
         System.out.println("르블랑이 스킬(왜곡)을 사용한다.");
-        if (player.mp <= 0 || player.mp < distortionMana) {
-            computer.hp += 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= distortionDamage;
-            player.mp -= distortionMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < distortionMana) {
+                computer.hp += 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= distortionDamage;
+                player.mp -= distortionMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < distortionMana) {
+                player.hp += 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= distortionDamage;
+                computer.mp -= distortionMana;
+            }
         }
     }
 
     // 스킬 3 사용 메소드
     @Override
-    public void skill3(Champion player, Champion computer) {
+    public void skill3(Champion player, Champion computer, String name) {
         System.out.println("르블랑이 스킬(환영사슬)을 사용한다.");
-        if (player.mp <= 0 || player.mp < etherealChainMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= etherealChainDamage;
-            player.mp -= etherealChainMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < etherealChainMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= etherealChainDamage;
+                player.mp -= etherealChainMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < etherealChainMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= etherealChainDamage;
+                computer.mp -= etherealChainMana;
+            }
         }
     }
 
     // 스킬 4 사용 메소드
     @Override
-    public void skill4(Champion player, Champion computer) {
+    public void skill4(Champion player, Champion computer, String name) {
         System.out.println("르블랑이 스킬(모방)을 사용한다.");
-        if (player.mp <= 0 || player.mp < mimicMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else  {
-            computer.hp -= mimicDamage;
-            player.mp -= mimicMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < mimicMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else  {
+                computer.hp -= mimicDamage;
+                player.mp -= mimicMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < mimicMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else  {
+                player.hp -= mimicDamage;
+                computer.mp -= mimicMana;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package lol.champion;
 
+
 public class Rakan extends Champion {
 
     int gleamingQuillDamage = 70;
@@ -20,8 +21,8 @@ public class Rakan extends Champion {
 
     // 상위 클래스의 공격 메소드 오버라이딩
     @Override
-    public void attack(Champion player, Champion computer) {
-        if (computer.hp <= 0) {
+    public void attack(Champion player, Champion computer, int attackCount) {
+        if (computer.hp <= 0 || attackCount == 0) {
             computer.hp -= 0;
         } else {
             computer.hp -= player.power;
@@ -30,53 +31,94 @@ public class Rakan extends Champion {
 
     // 스킬 1 사용 메소드
     @Override
-    public void skill1(Champion player, Champion computer) {
+    public void skill1(Champion player, Champion computer, String name) {
         System.out.println("라칸이 스킬(빛나는 깃털)을 사용한다.");
-        if (player.mp <= 0 || player.mp < gleamingQuillMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= gleamingQuillDamage;
-            player.mp -= gleamingQuillMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < gleamingQuillMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else if(name == "computer") {
+                computer.hp -= gleamingQuillDamage;
+                player.mp -= gleamingQuillMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < gleamingQuillMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= gleamingQuillDamage;
+                computer.mp -= gleamingQuillMana;
+            }
         }
     }
 
     // 스킬 2 사용 메소드
     @Override
-    public void skill2(Champion player, Champion computer) {
+    public void skill2(Champion player, Champion computer, String name) {
         System.out.println("라칸이 스킬(화려한 등장)을 사용한다.");
-        if (player.mp <= 0 || player.mp < grandEntranceMana) {
-            computer.hp += 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= grandEntranceDamage;
-            player.mp -= grandEntranceMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < grandEntranceMana) {
+                computer.hp += 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= grandEntranceDamage;
+                player.mp -= grandEntranceMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < grandEntranceMana) {
+                player.hp += 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= grandEntranceDamage;
+                computer.mp -= grandEntranceMana;
+            }
         }
+
     }
 
     // 스킬 3 사용 메소드
     @Override
-    public void skill3(Champion player, Champion computer) {
+    public void skill3(Champion player, Champion computer, String name) {
         System.out.println("라칸이 스킬(전쟁무도)을 사용한다.");
-        if (player.mp <= 0 || player.mp < battleDanceMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= battleDanceDamage;
-            player.mp -= battleDanceMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < battleDanceMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= battleDanceDamage;
+                player.mp -= battleDanceMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < battleDanceMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= battleDanceDamage;
+                computer.mp -= battleDanceMana;
+            }
         }
     }
 
     // 스킬 4 사용 메소드
     @Override
-    public void skill4(Champion player, Champion computer) {
+    public void skill4(Champion player, Champion computer, String name) {
         System.out.println("라칸이 스킬(매혹의 질주)을 사용한다.");
-        if (player.mp <= 0 || player.mp < theQuicknessMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else  {
-            computer.hp -= theQuicknessDamage;
-            player.mp -= theQuicknessMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < theQuicknessMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else  {
+                computer.hp -= theQuicknessDamage;
+                player.mp -= theQuicknessMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < theQuicknessMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else  {
+                player.hp -= theQuicknessDamage;
+                computer.mp -= theQuicknessMana;
+            }
         }
     }
 }

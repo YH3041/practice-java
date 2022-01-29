@@ -1,6 +1,5 @@
 package lol.champion;
 
-import lol.item.Item;
 import lol.position.Assassin;
 
 public class LeeSin extends Assassin {
@@ -27,8 +26,8 @@ public class LeeSin extends Assassin {
 
     // 상위 클래스의 공격 메소드 오버라이딩
     @Override
-    public void attack(Champion player, Champion computer) {
-        if (computer.hp <= 0) {
+    public void attack(Champion player, Champion computer, int attackCount) {
+        if (computer.hp <= 0 || attackCount == 0) {
             computer.hp -= 0;
         } else {
             computer.hp -= player.power;
@@ -49,68 +48,95 @@ public class LeeSin extends Assassin {
         System.out.println("리신이 어쌔신 전용 스킬 크리티컬 버프를 사용합나다.(크리티컬 데미지 15% 상승)");
     }
 
-    @Override
-    public void useItem(Item item, int effect) {
-        super.useItem(item, effect);
-        switch (item.name) {
-            case "빨간물약":
-                hp += effect;
-                break;
-            case "파란물약":
-                mp += effect;
-                break;
-        }
-    }
-
     // 스킬 1 사용 메소드
     @Override
-    public void skill1(Champion player, Champion computer) {
+    public void skill1(Champion player, Champion computer, String name) {
         System.out.println("리신이 스킬(음파)을 사용한다.");
-        if (player.mp <= 0 || player.mp < sonicWaveMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= sonicWaveDamage;
-            player.mp -= sonicWaveMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < sonicWaveMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= sonicWaveDamage;
+                player.mp -= sonicWaveMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < sonicWaveMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= sonicWaveDamage;
+                computer.mp -= sonicWaveMana;
+            }
         }
     }
 
     // 스킬 2 사용 메소드
     @Override
-    public void skill2(Champion player, Champion computer) {
+    public void skill2(Champion player, Champion computer, String name) {
         System.out.println("리신이 스킬(방호)을 사용한다.");
-        if (player.mp <= 0 || player.mp < safeGuardMana) {
-            computer.hp += 0;
-            player.mp -= 0;
-        } else {
-            player.hp += safeGuardArmor;
-            player.mp -= safeGuardMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < safeGuardMana) {
+                computer.hp += 0;
+                player.mp -= 0;
+            } else {
+                player.hp += safeGuardArmor;
+                player.mp -= safeGuardMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < safeGuardMana) {
+                player.hp += 0;
+                computer.mp -= 0;
+            } else {
+                computer.hp += safeGuardArmor;
+                computer.mp -= safeGuardMana;
+            }
         }
     }
 
     // 스킬 3 사용 메소드
     @Override
-    public void skill3(Champion player, Champion computer) {
+    public void skill3(Champion player, Champion computer, String name) {
         System.out.println("리신이 스킬(폭풍)을 사용한다.");
-        if (player.mp <= 0 || player.mp < tempestMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else {
-            computer.hp -= tempestDamage;
-            player.mp -= tempestMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < tempestMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else {
+                computer.hp -= tempestDamage;
+                player.mp -= tempestMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < tempestMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else {
+                player.hp -= tempestDamage;
+                computer.mp -= tempestMana;
+            }
         }
     }
 
     // 스킬 4 사용 메소드
     @Override
-    public void skill4(Champion player, Champion computer) {
+    public void skill4(Champion player, Champion computer, String name) {
         System.out.println("리신이 스킬(용의분노)을 사용한다.");
-        if (player.mp <= 0 || player.mp < dragonRageMana) {
-            computer.hp -= 0;
-            player.mp -= 0;
-        } else  {
-            computer.hp -= dragonRageDamage;
-            player.mp -= dragonRageMana;
+        if (name == "player") {
+            if (player.mp <= 0 || player.mp < dragonRageMana) {
+                computer.hp -= 0;
+                player.mp -= 0;
+            } else  {
+                computer.hp -= dragonRageDamage;
+                player.mp -= dragonRageMana;
+            }
+        } else if(name == "computer") {
+            if (computer.mp <= 0 || computer.mp < dragonRageMana) {
+                player.hp -= 0;
+                computer.mp -= 0;
+            } else  {
+                player.hp -= dragonRageDamage;
+                computer.mp -= dragonRageMana;
+            }
         }
     }
 

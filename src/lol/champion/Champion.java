@@ -1,6 +1,5 @@
 package lol.champion;
 
-import lol.item.Item;
 
 public class Champion {
 
@@ -37,7 +36,7 @@ public class Champion {
     }
 
     // 공격 사용 메소드
-    public void attack(Champion player, Champion computer) {
+    public void attack(Champion player, Champion computer, int attackCount) {
         System.out.println("공격");
     }
 
@@ -46,25 +45,19 @@ public class Champion {
         System.out.println("회피");
     }
 
-    // 아이템 사용 메소드
-    public void useItem(Item item, int effect) {
-        System.out.println("아이템 사용");
-    }
-
-
-    public void skill1(Champion player, Champion computer) {
+    public void skill1(Champion player, Champion computer, String name) {
         System.out.println("스킬 1 사용");
     }
 
-    public void skill2(Champion player, Champion computer) {
+    public void skill2(Champion player, Champion computer, String name) {
         System.out.println("스킬 2 사용");
     }
 
-    public void skill3(Champion player, Champion computer) {
+    public void skill3(Champion player, Champion computer, String name) {
         System.out.println("스킬 3 사용");
     }
 
-    public void skill4(Champion player, Champion computer) {
+    public void skill4(Champion player, Champion computer, String name) {
         System.out.println("스킬 4 사용");
     }
 }
