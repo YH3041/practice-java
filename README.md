@@ -14,7 +14,6 @@ Player와 Computer가 챔피언을 선택하여 1:1 대전을 진행하는 프�
 🔗 https://www.notion.so/9955b5a87e7e4861a8f70b594fb28597 (클래스 설계도 내용 정리)
 ![스크린샷 2022-02-11 오전 1 10 43](https://user-images.githubusercontent.com/60283977/153448461-db874018-2721-49c5-93b0-41b39bcf0fb3.png)
 
-
 ##❗프로젝트 이슈
 #### 문제점
 대결 상황에서 Player 또는 Computer의 공격 차례일 떄 공격할 수 있는 제한 시간이 흐르는 기능을 구현하는 과정에서 
